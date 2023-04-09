@@ -1,11 +1,9 @@
-// Create an array with three options: Rock, Paper and Scissors
-// Choose one of the options randomly
-// Return the option
 document.addEventListener("DOMContentLoaded", function () {
   let options = ["Rock", "Paper", "Scissors"];
   let computerScore = 0;
   let playerScore = 0;
   let textToShow = "";
+  let titleText = "Rock, Paper and Scissors!";
   const rock = document.getElementById("rock");
   const paper = document.getElementById("paper");
   const scissors = document.getElementById("scissors");
@@ -13,7 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const player = document.getElementById("player-score");
   const computer = document.getElementById("computer-score");
 
-  // After each round, if either computer or player wins they get +1 score
+  typeWriterEffect(titleText, document.getElementById("title"));
+
+  function typeWriterEffect(text, targetElement) {
+    let i = 0;
+    const speed = 75;
+
+    function type() {
+      if (i < text.length) {
+        targetElement.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+
+    type();
+  }
+
   function updateScore(result) {
     if (result === "There is a tie!") return;
     if (
